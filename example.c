@@ -9,7 +9,7 @@ void ex1() {
 
     for (; bar.current <= bar.max && !progbar_update(&bar, 1);) {
         progbar_draw(&bar);
-        usleep(15000);
+        usleep(25000);
     }
 }
 
@@ -28,7 +28,7 @@ void ex2() {
 }
 
 int main () {
-    // ex1();
-    ex2();
+    ex1();
+    // ex2();
     return 0;
 }

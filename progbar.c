@@ -35,8 +35,10 @@ void progbar_draw(progbar* bar) {
 
     unsigned int ind = 0;
 
-    printf(CR);
     printf(ESC CSI CHIDE);
+
+    // printf(CR);
+    printf(ESC CSI "%d" CPL, 1);
 
     while ( bar->fmt[ind] ) {
         if ( bar->fmt[ind] == BAR_TOKEN_SYMB ) {
@@ -80,7 +82,8 @@ void progbar_draw(progbar* bar) {
         ind++;
     }
 
-    fflush(stdout);
+    // fflush(stdout);
+    printf("\n");
     printf(ESC CSI CSHOW);
 }
 

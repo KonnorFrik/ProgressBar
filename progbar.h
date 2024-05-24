@@ -1,6 +1,8 @@
 #ifndef __PROGBAR_H__
 #define __PROGBAR_H__
 
+// TODO: add format specification
+
 typedef struct progbar {
     unsigned int max; ///< maximum value for progress counting. Default: 100
     unsigned int current; ///< current progress. Start from 0
