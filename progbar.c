@@ -30,15 +30,9 @@ void progbar_init(progbar* bar) {
     bar->head = BAR_HEAD;
 }
 
-void progbar_draw(progbar* bar) {
-    unsigned int cur_prog = ( bar->current * bar->max / 100 ) * bar->char_len / 100;
-
+void print_bar_(progbar* bar) {
+    unsigned int cur_prog = ( bar->current * 100 / bar->max ) * bar->char_len / 100;
     unsigned int ind = 0;
-
-    printf(ESC CSI CHIDE);
-
-    // printf(CR);
-    printf(ESC CSI "%d" CPL, 1);
 
     while ( bar->fmt[ind] ) {
         if ( bar->fmt[ind] == BAR_TOKEN_SYMB ) {
@@ -81,6 +75,15 @@ void progbar_draw(progbar* bar) {
 
         ind++;
     }
+}
+
+void progbar_draw(progbar* bar) {
+    printf(ESC CSI CHIDE);
+
+    // printf(CR);
+    printf(ESC CSI "%d" CPL, 1);
+
+    print_bar_(bar);
 
     // fflush(stdout);
     printf("\n");

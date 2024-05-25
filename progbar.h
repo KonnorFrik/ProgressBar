@@ -1,7 +1,16 @@
 #ifndef __PROGBAR_H__
 #define __PROGBAR_H__
 
-// TODO: add format specification
+/**
+ * Format specification
+ * any format token must be leading with '%'
+ * tokens:
+ * i - print progbar.info if not NULL
+ * b - print bar 
+ * c - print progbar.current as int
+ * m - print progbar.max as int
+ * % - print '%'
+ */
 
 typedef struct progbar {
     unsigned int max; ///< maximum value for progress counting. Default: 100
@@ -39,5 +48,14 @@ void progbar_draw(progbar* bar);
  * @return is_full Is progress reach max, 0-No, 1-Yes
  */
 int progbar_update(progbar* bar, unsigned int value);
+
+
+/**
+ * @brief Print only formatted bar
+ * @warning Don't use directly
+ * @param[in] bar Not NULL progbar object
+ * @return void
+ */
+void print_bar_(progbar* bar);
 
 #endif /* __PROGBAR_H__ */

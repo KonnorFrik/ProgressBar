@@ -20,8 +20,8 @@ $(TARGET): progbar.o
 $(TARGET_THR): progbar.o progbar_thr.o
 > $(AR) src $@ $^
 
-$(EXAMPLE): $(EXAMPLE_OBJ) $(TARGET)
-> $(CC) -L. -Wl,-rpath=. $(CFLAGS) $^ -lprogbar $(LDFLAGS) -o $@
+$(EXAMPLE): $(EXAMPLE_OBJ) $(TARGET) $(TARGET_THR)
+> $(CC) -L. -Wl,-rpath=. $(CFLAGS) $^ -lprogbar -lprogbar_thr $(LDFLAGS) -o $@
 
 clean:
 > $(RM) $(wildcard *.o)
